@@ -1,0 +1,468 @@
+\documentclass[10pt,a4paper,twoside,twocolumn]{article}
+\usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=1.50cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\author{Markus Kasten}
+
+\begin{document}
+	\section{Äquivalenzumformungen}
+	
+	\subsection{Assoziativgesetze}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ (A \lor B) \lor C \Leftrightarrow A \lor (B \lor C) $
+		\item $ (A \land B) \land C \Leftrightarrow A \land (B \land C) $
+	\end{itemize}
+	
+	\subsection{Distributivgesetze}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ A \lor (B \land C) \Leftrightarrow (A \lor B) \land (A \lor C) $
+		\item $ A \land (B \lor C) \Leftrightarrow (A \land B) \lor (A \land C) $
+	\end{itemize}
+
+	\subsection{Absorbtionsgesetze}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ A \land (A \lor B) \Leftrightarrow A $
+		\item $ A \lor (A \land B) \Leftrightarrow A $
+	\end{itemize}
+
+	\subsection{De Morgan}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ \neg (A \land B) \Leftrightarrow \neg A \lor \neg B $
+		\item $ \neg (A \lor B) \Leftrightarrow \neg A \land \neg B $
+	\end{itemize}
+
+	\subsection{Negation}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ \neg \forall x : p(x) \equiv \exists x : (\neg p(x)) $
+		\item $ \neg \exists x : p(x) \equiv \forall x : (\neg p(x)) $
+	\end{itemize}
+
+	\subsection{Ausklammerregeln}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ (\forall x: p(x) \land \forall x : q(x)) \equiv \forall x : (p(x) \land q(x)) $
+		\item $ (\exists x: p(x) \lor \exists x : q(x)) \equiv \exists x : (p(x) \lor q(x)) $
+	\end{itemize}
+	
+	\subsection{Vertauschungsregeln}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ \forall x \forall y : p(x, y) \equiv \forall y \forall x : p(x, y) $
+		\item $ \exists x \exists y : p(x, y) \equiv \exists y \exists x : p(x, y) $
+	\end{itemize}
+	
+	
+	\section{Mengen}
+	
+	\subsection{Kartesisches Produkt}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ \{ a, b, c \} \times \{ 0, 1 \} = \{ (a, 0), (a, 1), (b, 0), (b, 1), (c, 0), (c, 1) \} $
+		\item $ A \times \emptyset = \emptyset \times A = \emptyset $
+		\item $ A \times B \cong B \times A $ (isomorph, 1:1)
+	\end{itemize}
+		
+	\subsection{Potenzmenge}
+	$ \mathcal{P}(\{a, b\}) := \{ \emptyset, \{a\}, \{b\}, \{a, b\} \} $. Lässt sich gut als Hasse-Diagramm veranschaulichen.
+	
+	\subsection{Regeln}
+	
+	\subsubsection{De-Morgan}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C) $
+		\item $ A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C) $
+	\end{itemize}
+
+	\subsubsection{Absorption}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ A \cap (A \cup B) = A $
+		\item $ A \cup (A \cap B) = A $
+	\end{itemize}
+
+	\subsubsection{Idempotenzgesetze}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ A \cap A = A $
+		\item $ A \cup A = A $
+	\end{itemize}
+
+	\subsubsection{Komplementgesetze}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ A \cap \bar{A} = \emptyset $
+		\item $ A \cup A = G $
+	\end{itemize}
+
+	Zusätzlich gelten die Assoziativ-, Kummutativ- und Distributivgesetze.
+
+	\section{Relationen}
+	
+	\subsection{Eigenschaften}
+	
+	Eine Relation $ R \subseteq A^2 $ über einer Menge $ A $ heißt:
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item \textbf{reflexiv}, wenn jedes Element in Relation zu sich selbst steht: für alle $ a \in A : (a, a) \in R $
+		\item \textbf{symmetrisch}, wenn die Reihenfolge der Elemente keine Rolle spielt: $ (a, b) \in R \Rightarrow (b, a) \in R $
+		\item \textbf{antisymmetrisch}, wenn aus der Symmetrie die Identität folgt: $ (a, b) \in R \land (b, a) \in R \Rightarrow a = b $
+		\item \textbf{transitiv}, wenn aus einer Kette das mittlere Element entfernt werden kann: $ (a, b) \in R \land (b, c) \in R \Rightarrow (a, c) \in R $
+		\item \textbf{total} (auch linear), wenn zwei Elemente in mindestens einer Richtung in Beziehung stehen: $ a, b \in A : (a, b) \in R \lor (b, a) \in R $
+		\item \textbf{irreflexiv}: für alle $ a \in A $ mit $ (a, a) \notin R $
+		\item \textbf{asymmetrisch}: für alle $ a, b \in A $ mit $ (a, b) \in R \Rightarrow (b, a) \notin R $
+		\item \textbf{alternativ}: für alle $ a, b \in A $ mit $ (a, b) \in R \text{ xor } (b, a) \in R $
+	\end{itemize}
+
+	Eine Relation $ R \subseteq A \times B $ heißt:
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item \textbf{rechtseindeutig} (nacheindeutig), wenn für alle $ a \in A $ gilt: $ ((a, b) \in R \land (a, b') \in R) \Rightarrow b = b' $
+		\item \textbf{linkseindeutig}, wenn für alle $ b \in B $ gilt: $ ((a, b) \in R \land (a', b) \in R) \Rightarrow a = a' $
+		\item \textbf{eindeutig}, wenn $ R $ rechtseindeutig und $ R $ linkseindeutig
+		\item \textbf{linkstotal}, wenn für alle $ a \in A $ ein $ b \in B $ mit $ (a, b) \in R $ existiert.
+		\item \textbf{rechtstotal}, wenn für alle $ b \in B $ ein $ a \in A $ mit $ (a, b) \in R $ existiert.
+	\end{itemize}
+
+	\subsection{Äquivalenzrelationen}
+	
+	Eine Äquivalenzrelation ist reflexiv, symmetrisch und transitiv.
+	
+	\subsection{Ordnungsrelationen}
+	
+	...
+	
+	\subsubsection{Halbordnung}
+	
+	...
+	
+	\section{Abbildungen}
+	
+	Unter einer Abbildung $ f $ von einer Menge $ A $ in eine Menge $ B $ versteht man eine Vorschrift, die jedem $ a \in A $ eindeutig ein bestimmtes $ b = f(a) \in B $ zuordnet. Schreibweise $ f : A \to B $. Für die Elementarzuordnung wird die Schreibweise $ a \mapsto b = f(a) $ verwendet. $ b $ bezeichnet das \textbf{Bild} von $ a $, $ a $ bezeichnet das \textbf{Urbild} von $ b $, auch $ f^{-1} $.
+	
+	\subsection{Komposition}
+	
+	Die Komposition (oder Verknüpfung) zweier Abbildungen $ f : A \to B $ und $ g : B \to C $ ist:
+	\[ a \mapsto (g \circ f)(a) = g(f(a)), a \in A \]
+	
+	Die Verknüpfung über $ \circ $ ist assoziativ, also $ (h \circ g) \circ f = h \circ (g \circ f) $, aber nicht kommutativ.
+	
+	\subsection{Injektiv/Surjektiv/Bijektiv}
+	Eine Abbildung ist
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item \textbf{injektiv}, wenn kein Element der rechten Seite doppelt belegt ist: $ \forall x_1, x_2 \in D: f(x_1)=f(x_2) \Rightarrow x_1=x_2 $
+		\item \textbf{surjektiv}, wenn alle Elemente der rechten Seite belegt sind: $ \forall y\in Z: \exists x\in D: y=f(x) $
+		\item \textbf{bijektiv}, wenn die Abbildung injektiv und surjektiv ist.
+	\end{itemize}
+	
+	\section{Beweise}
+	
+	\subsection{Direkter Beweis}
+	
+	\subsubsection{Beispiel}
+	
+	\paragraph{Lemma} Wenn $ a $ durch 6 teilbar ist, dann ist $ a $ auch durch 3 teilbar.
+	
+	\paragraph{Beweis} Wenn $ a $ durch 6 teilbar ist, dann gibt es eine ganze Zahl $ k $, so dass $ a = 6k $ gilt. Da $ 6 = 2 \cdot 3 $, folgt $ a = (2 \cdot 3) \cdot k $. Durch Umformung erhält man $ a = 2 \cdot (3 \cdot k) $. Weil $ 2k $ eine ganze Zahl ist, folgt schließlich, dass $ a $ durch 3 teilbar ist.
+	
+	\subsection{Beweis durch Kontraposition}
+	Beruht auf der Tautologie: $ (F \Rightarrow G) \Leftrightarrow (\neg G \Rightarrow \neg F) $
+	
+	\subsubsection{Beispiel}
+	
+	\paragraph{Lemma} Wenn $ a^2 $ eine ungerade Zahl ist, dann ist $ a $ ungerade.
+	
+	\paragraph{Beweis} Wir führen einen Beweis durch Kontraposition. Sei also angenommen, dass $ a $ gerade ist. Dann ist $ a = 2k $ für eine ganze Zahl $ k $. Deshalb ist $ a^2 = 2 \cdot (k \cdot a) $.
+	Weil $ k \cdot a $ eine ganze Zahl ist, folgt schließlich $ a^2 = 2k' $ für eine ganze Zahl $ k' $. Also ist $ a^2 $ gerade.
+	
+	\subsection{Widerspruchsbeweis}
+	Im Widerspruchs-Beweis wird anstelle von $ p \Rightarrow q $ bewiesen, dass $ (p \land \neg q) $ falsch ist.
+	
+	\subsubsection{Beispiel}
+	
+	\paragraph{Lemma} Wenn $ a $ und $ b $ gerade natürliche Zahlen sind, dann ist auch $ a \cdot b $ gerade.
+	
+	\paragraph{Beweis} Wir führen einen Widerspruchs-Beweis. Sei also angenommen, dass $ a $ und $ b $ gerade sind, und dass $ a \cdot b $ ungerade ist. Da $ b $ gerade ist, kann $ b $ geschrieben werden als $ b = 2k $ für eine ganze Zahl $ k $. Deshalb gilt $ a \cdot b = 2 \cdot (a \cdot k) $. Da $ a \cdot k $ eine ganze Zahl ist, muss $ a \cdot b $ gerade sein. Damit haben wir einen Widerspruch zur Annahme “$ a \cdot b $ ist ungerade” hergeleitet.
+	
+	\subsection{Äquivalenzbeweis}
+	Ein Beweis der Form $ p \Leftrightarrow q $ wird in die Teilbeweise $ p \Rightarrow q $ und $ q \Rightarrow p $ aufgeteilt.
+	
+	\subsubsection{Beispiel}
+	
+	\paragraph{Lemma} $ a $ ist gerade genau dann, wenn $ a^2 $ gerade ist.
+	
+	\paragraph{Beweis} Die Aussage $ p $ ist “$ a $ ist gerade.” und die Aussage $ q $ ist “$ a^2 $ ist gerade.”
+	
+	\begin{enumerate}
+		\item $ p \Rightarrow q $ st die Behauptung: “Wenn $ a $ gerade ist, dann ist $ a^2 $ gerade.”. Dies ist ein Spezialfall des Lemma des Widerspruchsbeweises, bei dem $ a \cdot b $ gilt. Fertig!
+		\item $ q \Rightarrow p $ ist die Behauptung: “Wenn $ a^2 $ gerade ist, dann ist $ a $ gerade.”.
+		
+		$ q \Rightarrow p $ beweisen wir durch Kontraposition, beginnen also mit der Hypothese $ \neg p $: “a ist ungerade.”
+		
+		Dann ist $ a - 1 $ gerade und kann als $ a - 1 = 2k $ für eine ganze Zahl $ k $ geschrieben werden. Es folgt $ a = 2k + 1 $.
+		
+		Dann ist $ a^2 = (2k)^2 + 2 \cdot (2k) + 1 $. Durch Umformen erhält man $ a^2 = 2 \cdot (k \cdot 2 \cdot k + 2k) + 1 $. Also folgt, dass $ a^2 $ ungerade ist. Damit ist bewiesen: “Wenn $ a $ ungerade ist, dann ist $ a^2 $ ungerade.”
+	\end{enumerate}
+
+	Da wir sowohl $ p \Rightarrow q $ als auch $ q \Rightarrow p $ bewiesen haben, ist der Beweis für die Äquivalenz erbracht.
+	
+	\subsection{Atomare Aussagen}
+	
+	\subsubsection{Beispiel}
+	
+	\paragraph{Lemma} $ \sqrt{2} $ ist keine rationale Zahl.
+	
+	\paragraph{Beweis}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item Annahme: $ \sqrt{2} $ ist rational
+		\item Also gibt es $ m, n \in \mathbb{N}, n \neq 0 $ mit $ \sqrt{2} = \frac{m}{n} $
+		\item Es gilt: $ 2 = (\frac{m}{n})^2 = \frac{m^2}{n^2} \Leftrightarrow m^2 = 2n^2 $.
+		\item Also ist $ m^2 $ eine gerade Zahl.
+		\item Dies kann aber nur sein, wenn auch $ m $ eine gerade Zahl, also $ m = 2k $.
+		\item Eingesetzt ergibt sich: $ 2n^2 = m^2 = (2k)^2 = 4k^2 \Leftrightarrow n^2 = 2k^2 $.
+		\item Also ist auch $ n^2 $ gerade und damit auch $ n $, d. h. $ n = 2l $.
+		\item Damit liegt aber $ \sqrt{2} = \frac{m}{n} = \frac{2k}{2l} $ nicht gekürzt vor, Widerspruch!
+		\item Also muss die Annahme falsch sein.
+	\end{itemize}
+
+	\subsection{Fallunterscheidung}
+	
+	Die Aussage wird in alle möglichen Fälle aufgeteilt und jeweils bewiesen.
+	
+	\subsubsection{Beispiel}
+	
+	\paragraph{Lemma} Jede natürliche Zahl $ n^2 $ geteilt durch 4 lässt entweder den Rest 1 oder 0.
+	
+	\paragraph{Beweis}
+	
+	\begin{enumerate}
+		\item $ n $ ist gerade:
+		
+		$ n $ gerade $ \Rightarrow n = 2m $ für $ m \in \mathbb{N} $ 
+		$ \Rightarrow n^2 = 4m^2 $
+		$ \Rightarrow n^2 $ durch 4 teilbar
+		$ \Rightarrow $ Rest ist 0
+		$ \Rightarrow $ Rest ist 1 oder 0
+		
+		\item $ n $ ist ungerade:
+		
+		$ n $ ungerade $ \Rightarrow n = 2m + 1 $ für $ m \in \mathbb{N} $ 
+		$ \Rightarrow n^2 = 4m^2 + 4m + 1 = 4(m^2 + m) + 1 $
+		$ \Rightarrow n^2 $ durch 4 teilbar mit Rest 1
+		$ \Rightarrow $ Rest ist 1
+		$ \Rightarrow $ Rest ist 1 oder 0
+	\end{enumerate}
+
+	Damit sind alle möglichen Fälle betrachtet.
+	
+	\subsection{Beweise mit Quantoren}
+	
+	\subsubsection{Beispiel}
+	
+	\paragraph{Lemma} Für jede natürliche Zahl $ t $ und für jede natürliche Zahl $ n $ gilt: Wenn $ t \geq 2 $ und $ t $ ein Teiler von $ n $ ist, dann ist $ t $ kein Teiler von $ n + 1 $.
+	
+	\paragraph{Beweis} Wir wählen für $ t $ und $ n $ zwei beliebige Zahlen $ a, b \in \mathbb{N} $ und führen einen Widerspruchsbeweis. Schema: $ (p \land \neg q) $. Sei angenommen, dass $ a \geq 2 $ ein Teiler von $ b $ und ein Teiler von $ b + 1 $ ist. Dann ist $ b = a \cdot k $ und $ b + 1 = a \cdot k' $ für zwei ganze Zahlen $ k $ und $  k' $. Also ist $ 1 = a \cdot k' - a \cdot k = a \cdot (k - k') $. Da $ k - k' $ eine ganze Zahl ist, muss $ a = 1 $ gelten. Das ist ein Widerspruch zur Hypothese $ a \geq 2 $.
+	
+	\subsection{Kombinatorik}
+	
+	Auch Schubfachprinzip. Halten sich $ k + 1 $ Tauben in $ k $ Taubenschlägen auf, so gibt es mindestens einen Taubenschlag, in dem sich wenigstens zwei Tauben befinden.
+	
+	\section{Vollständige Induktion}
+	
+	\subsection{Schema}
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item \textbf{Induktionsanfang (IA):} Man zeigt, dass $ A(0) $ richtig ist.
+		\item \textbf{Induktionbehauptung (IB):} Annahme, dass $ A(k) $ für ein beliebiges aber festes $ k $ richtig ist.
+		\item \textbf{Induktionsschritt (IS):} Man zeigt: Aus der Annahme, dass $ A(k) $ richtig ist, folgt dass $ A(k + 1) $ richtig ist: $ A(k) \Rightarrow A(k + 1) $
+	\end{itemize}
+
+	\subsection{Beispiele}
+	
+	\subsubsection{Summe}
+	
+	\paragraph{Satz} Für alle natürlich Zahlen $ n $ gilt: 
+	
+	\[ \sum_{i=0}^{n} 2^i = 2^{n + 1} - 1 \]
+	
+	\paragraph{Beweis}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item \textbf{IA}: Die Eigenschaft gilt für $ n = 0 $, denn $ \sum_{i=0}^{n} 2^i = 2^0 = 1 $ und $ 2^{0+1} - 1 = 2 - 1 = 1 $.
+		\item \textbf{IB}: Wir nehmen an, dass die Summenformel für ein beliebiges aber festes $ n $ gilt: $ \sum_{i=0}^{n} 2^i = 2^{n + 1} - 1 $.
+		\item \textbf{IS}: Unter der Voraussetzung, dass die IB gilt, wollen wir die Summenformel für $ n + 1 $ zeigen: $ \sum_{i=0}^{n + 1} 2^i = 2^{n + 2} - 1 $. Dies kann durch folgende Summenformel gezeigt werden:
+		$ \sum_{i=0}^{n + 1} 2^i = (\sum_{i=0}^{n} 2^i) + 2^{n + 1} \stackrel{IB}{=} (2^{n + 1} - 1) + 2^{n + 1} = 2 \cdot 2^{n + 1} - 1 = 2^{n + 2}- 1 $
+	\end{itemize}
+
+	Nach dem Induktionsprinzip gilt die Aussage nun für alle natürlichlichen Zahlen.
+	
+	\subsubsection{Teilbarkeit}
+	
+	\paragraph{Satz} $ 5^n + 7 $ ist durch $ 4 $ teilbar mit $ n \in \mathbb{N} $.
+	
+	\paragraph{Beweis}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item \textbf{IA}: $ n = 0 $, also $ 5^0 + 7 = 4 \cdot 2 $
+		\item \textbf{IB}: Für ein baf $ n $ gilt $ 5^n + 7 = 4k $ mit $ k \in \mathbb{N} $
+		\item \textbf{IS}: $ n \Rightarrow n + 1 $: $ 5^{n + 1} + 7 = 5 \cdot 5^n + 7 = (4 + 1) \cdot 5^n + 7 = 4 \cdot 5^n + 5^n + 7 \stackrel{IB}{=} 4 \cdot 5^n + 4k = 4(5^n + k) $
+	\end{itemize}
+	
+	\subsection{Verallgemeinerte vollständige Induktion}
+	
+	Die Annahme $ A(n) $ ist nicht immer stark genug, um $ A(n + 1) $ beweisen zu können. Deshalb muss manchmal eine stärkere Annahme benutzt werden: $ A(0), A(1), A(2), \ldots, A(n) $ sind richtig.
+	
+	Entsprechend der verallgemeinerte Induktionssatz, welcher $ A(n) \Rightarrow A(n + 1) $ impliziert:
+	
+	\[ \forall n \in \mathbb{N}: (A(0) \land \ldots \land A(n)) \Rightarrow A(n + 1) \]
+	
+	\subsubsection{Beispiel}
+	
+	...
+	
+	\section{Folgen}
+	
+	\subsection{Konvergenz}
+	
+	Eine Folge $ (a_n) $ konvergiert gegen $ a \in \mathbb{R} $, wenn zu jedem $ \epsilon > 0 $ ein $ N \in \mathbb{R} $ existiert, so dass $ | a_n - a | < \epsilon $ für alle $ n > N $. $ a $ ist der Grenzwert der Folge $ (a_n) $. Konvergiert die Folge gegen 0, heißt sie Nullfolge. Konvergiert sie nicht, heißt sie divergent. Formal dargestellt:
+	
+	\[ \forall \epsilon > 0 : \exists N \in \mathbb{R} : \forall n > N : |a_n - a| < \epsilon \]
+	
+	\subsubsection{Wichtige Grenzwerte}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ \lim\limits_{n \to \infty} \frac{1}{n^s} = 0 $ für jedes positive $ s \in \mathbb{Q} $
+		\item $ \lim\limits_{n \to \infty} \sqrt[n]{a} = 1 $ für jedes reelle $ a > 0$
+		\item $ \lim\limits_{n \to \infty} \sqrt[n]{n} = 1 $
+		\item $ \lim\limits_{n \to \infty} q^n = 0 $ für jedes reelle $ q $ mit $ |q| < 1 $
+	\end{itemize}
+
+	\subsection{Asymptotische Gleichheit}
+	
+	Zwei Folgen $ (a_n) $ und $ (b_n) $ heißen asymptotisch gleich, wenn der Grenzwert von $ \frac{a_n}{b_n} $ gegen $ 1 $ konvergiert, auch $ a_n \simeq b_n $. Die Folgen $ a_n = n $ und $ b_n = 1 + n $ sind asymptotisch gleich.
+	
+	\subsection{Monotone Folgen}
+	
+	Eine Folge $ (a_n) $ heißt monoton wachsend, wenn $ a_n \leq a_{n + 1} $ für alle $ n $ und monoton fallend, wenn $ a_n \geq a_{n + 1} $ für alle $ n $.
+	
+	\subsection{Beschränkte Folgen}
+	
+	Eine Folge $ (a_n) $ heißt beschränkt, wenn es eine Zahl $ s $ gibt, so dass $ |a_n| \leq s $ für alle $ n $ gilt.
+	
+	\subsection{Regeln}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item konvergent $ \Rightarrow $ beschränkt
+		\item monoton $ \land $ beschränkt $ \Rightarrow $ konvergent.
+	\end{itemize}
+
+	\subsection{Beispiele}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ a_n = (-1)^n $ ist beschränkt, aber nicht konvergent.
+	\end{itemize}
+	
+	\section{Reihen}
+	
+	Eine Summe mit unendlich vielen Summanden wird Reihe genannt. Sie konvergiert gegen einen Grenzwert $ s $, wenn die Folge der Partialsummen $ (s_n)  $ gegen $ s $ konvergiert. Ohne Grenzwert wird die Reihe als divergent bezeichnet.
+	
+	\subsection{Konvergenzkriterien}
+	
+	\paragraph{Majorantenkriterium} Für alle $ i \in \mathbb{N} $ sei $ |a_i| \leq b_i $. Dann gilt:
+	
+	\begin{enumerate}
+		\item Falls $ \sum_{i = 0}^{\infty} b_i $ konvergent ist, ist $ \sum_{i = 0}^{\infty} a_i $ absolut konvergent
+		\item Falls $ \sum_{i = 0}^{\infty} a_i $ divergent ist, ist $ \sum_{i = 0}^{\infty} b_i $ auch divergent
+	\end{enumerate}
+
+	\paragraph{Quotentenkriterium} Falls alle $ a_i \neq 0 $ sind und der Grenzwert $ \lim\limits_{i \to \infty} \frac{a_{i + 1}}{a_i} = q $ existiert, dann konvergiert die Reihe $ \sum_{i = 0}^{\infty} a_i $ für $ q < 1 $ und divergiert für $ q > 1 $.
+	
+	\paragraph{Leibniz-Kriterium} Eine Reihe mit $ a_i \cdot a_{i + 1} < 0 $ für alle $ i \in \mathbb{N} $ heißt alternierend. Eine alternierende Reihe konvergiert, falls $ |a_k| $ eine monotone Nullfolge ist. Der Betrag einer alternierenden Reihe kann immer durch den ersten Summanden abgeschätzt werden.
+	
+	\section{Kombinatorik}
+	
+	\subsection{Permutation}
+	
+	Eine Anordnung aller Elemente einer endlichen Menge heißt Permutation. Die Anzahl Permutationen einer Menge mit der Länge $ n $ ist $ n! $. Eine $ k $-Permutation $ [\stackrel{n}{k}] = \frac{n!}{(n - k)!} $ (auch $ (n)_k $) bezeichnet eine $ k $-elementige Teilmenge einer $ n $-elementigen Menge. 
+	
+	\[ \binom{n}{k} = \frac{n!}{k! \cdot (n - k)!} \]
+	
+	Pascal'sche Gleichung:
+	
+	\[ \binom{n}{k} = \binom{n - 1}{k - 1} + \binom{n - 1}{k} \]
+	
+	\subsection{Hilfstabellen}
+	
+	\begin{tabularx}{\columnwidth}{XXX}
+		\hline 
+		$ k $ aus $ n $ & Variation \newline Anordnung relevant & Kombination \newline Anordnung irrelevant \\ 
+		\hline 
+		ohne \newline Wiederholung & $ [\stackrel{n}{k}] $ & $ \binom{n}{k} $ \\ 
+		\hline 
+		mit \newline Wiederholung & $ n^k $ & $ \binom{n+ k + 1}{k} $ \\ 
+		\hline 
+	\end{tabularx}
+
+	\subsubsection{Für Permutationen}
+	
+	\begin{tabularx}{\columnwidth}{XX}
+		\hline 
+		$ n $ aus $ n $ & Permutation \\ 
+		\hline 
+		ohne Gleiche & $ n! $ \\ 
+		\hline 
+		mit Gleichen & $ \frac{n!}{n_1! + n_2! + ... + n_k!} $ \newline mit $ n = n_1 + n_2 + ... + n_k $ \\ 
+		\hline 
+	\end{tabularx}
+
+	
+	\section{Matrizen und LGS}
+	
+	\subsection{Gaußverfahren}
+	
+	
+	
+	\section{Mathematische Symbole}
+
+	\begin{description}
+		\item[$ \lfloor x \rfloor $] bezeichnet die größte ganze Zahl $ n $, die kleiner als $ x $ ist.
+		\item[$ \lceil x \rceil $] bezeichnet die kleinste ganze Zahl $ n $, die größer als $ x $ ist.
+	\end{description}
+
+	\section{Allgemeine Regeln}
+	
+	\subsection{Potenzregeln}
+	
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item $ a^n \cdot a^m = n^{n+m} $
+		\item $ a^n \cdot b^n = (ab)^n $
+		\item $ {(a^n)}^m = a^{m \cdot n} $
+		\item $ a^{-n} = \frac{1}{a^n} $
+		\item $ a^{\frac{n}{m}} = \sqrt[m]{a^n} $
+	\end{itemize}
+\end{document}
