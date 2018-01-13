@@ -440,22 +440,37 @@
 	\end{tabularx}
 
 	
-	\section{Matrizen und LGS}
+	\section{Lineare Gleichungssysteme}
 	
-	\subsection{Gaußverfahren}
+	\subsection{Homogenes Gleichungssystem}
 	
+	Es wird ein lineares Gleichungssystem mit der Koeffizentenmatrix $ A $ und einem festen Vektor $ b $ und dem Lösungsvektor $ x $ betrachtet:
 	
+	\[ Ax = b \]
+	
+	Das LGS heißt homogen, wenn $ b = 0 $, sonst ist das LGS inhomogen. Ein homogenes Gleichungssystem besitzt mindestens die Lösung $ x = 0 $ (triviale Lösung) und ist somit immer lösbar.
+	
+	\subsection{Lösung mittels Gaußverfahren}
+	
+	\begin{enumerate}
+		\item Koeffizientenmatrix aufstellen
+		\item Die Matrix in Zeilenstufenform bringen
+		\item Lösung ermitteln:
+		
+		\paragraph{Homogenes LGS:} Wenn die Anzahl Zeilen gleich der Anzahl Variablen entspricht: Es gibt eine Lösung, $ L = \{ \vec{0} \} $, sonst gibt es unendlich viele Lösungen die über Parameter bestimmt werden müssen.
+	\end{enumerate}
 	
 	\section{Mathematische Symbole}
 
 	\begin{description}
 		\item[$ \lfloor x \rfloor $] bezeichnet die größte ganze Zahl $ n $, die kleiner als $ x $ ist.
 		\item[$ \lceil x \rceil $] bezeichnet die kleinste ganze Zahl $ n $, die größer als $ x $ ist.
+		\item[$ \dot{\lor} $] Exklusives Oder
 	\end{description}
 
 	\section{Allgemeines}
 	
-	\subsection{Potenzregeln}
+	\subsection{Umformungen}
 	
 	\begin{itemize}
 		\setlength\itemsep{0em}
@@ -464,7 +479,20 @@
 		\item $ {(a^n)}^m = a^{m \cdot n} $
 		\item $ a^{-n} = \frac{1}{a^n} $
 		\item $ a^{\frac{n}{m}} = \sqrt[m]{a^n} $
+		\item $ \sqrt{a} \cdot \sqrt{b} = \sqrt{a \cdot b} $
+		\item $ \frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}} $
+		\item $ \sqrt[n]{0} = 0 $
+		\item $ \log_ab = x \equiv a^x = b $
+		\item $ \log(uv) = \log u + \log v $
+		\item $ \log\frac{u}{v} = \log u - \log v $
+		\item $ \log u^r = r \cdot \log u $
 	\end{itemize}
+
+	$ a^2 + 2ab + b^2 = (a + b)^2 $
+	
+	$ a^2 - 2ab + b^2  = (a - b)^2 $
+	
+	$ a^2 - b^2 = (a + b) \cdot (a - b) $
 
 	\subsection{Fakultäten}
 	
@@ -480,6 +508,5 @@
 		\item $ 7! = 5.040 $
 		\item $ 8! = 40.320 $
 		\item $ 9! = 362.880 $
-	\end{itemize}
-	
+	\end{itemize}	
 \end{document}
